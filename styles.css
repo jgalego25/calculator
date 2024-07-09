@@ -1,0 +1,31 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1000px;
+}
+
+.container {
+    background-color: red;
+    width: 450px;
+    height: 800px;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.display {
+    background-color: blue;
+    width: 450px;
+    height: 250px;
+    border-radius: 5%;
+}
+
+.buttonsContainer {
+    background-color: black;
+    height: 650px;
+    width: 450px;
+    border-radius: 5%;
+}
+
+
