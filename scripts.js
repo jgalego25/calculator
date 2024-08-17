@@ -58,6 +58,7 @@ operatorButtons.forEach(button => {
         if (operator != "" && check === 1) {
             secondNumber = currentOperation.innerText.split(operator).pop();            
             currentOperation.innerText = operate(parseFloat(firstNumber),operator,parseFloat(secondNumber));
+            if (currentOperation.innerText.length >= 9) currentOperation.innerText = parseFloat(currentOperation.innerText).toExponential(1);
             previousOperation.innerText = firstNumber + operator + secondNumber;
             firstNumber = secondNumber;
           
@@ -106,6 +107,7 @@ equalButton.addEventListener("click", () => {
     else {    
         secondNumber = currentOperation.innerText.split(operator).pop(); 
         currentOperation.innerText = operate(parseFloat(firstNumber),operator,parseFloat(secondNumber));
+        if (currentOperation.innerText.length >= 9) currentOperation.innerText = parseFloat(currentOperation.innerText).toExponential(1);
         previousOperation.innerText = firstNumber + operator + secondNumber;
         operator = "";
     }
