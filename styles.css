@@ -17,14 +17,31 @@ body {
 
 .display {
     background-color: #30333F;
-    width: 450px;
-    height: 550px;
-    border-radius: 5%;
-    color: #e1e3e5;
+    width: 430px;
+    margin-left: 10px;
+    margin-top: 10px;
+    height: 500px;
+    border-radius: 5%;    
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    flex-direction: column;
     font-size: 75px;
+}
+
+.previousOperation {
+  color: #e1e3e5;
+  opacity: 50%;
+  text-align: right;
+  align-content: center;
+  font-size: 40px;
+  width: 430px;
+  height: 100px;
+}
+
+.currentOperation {
+  color: #e1e3e5;
+  width: 430px;
+  height: 100px;
+  text-align: right;
 }
 
 .buttonsContainer {
