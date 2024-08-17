@@ -36,6 +36,8 @@ const clearButton = document.querySelector(".clear");
 const deleteButton = document.querySelector(".delete");
 const equalButton = document.querySelector(".equal");
 const decimalButton = document.querySelector(".decimal");
+const nPButton = document.querySelector(".nP");
+const percentangeButton = document.querySelector(".percentage");
 
 numberButtons.forEach(button => {
     button.addEventListener("click",() => {
@@ -48,15 +50,22 @@ numberButtons.forEach(button => {
 });
 
 operatorButtons.forEach(button => {
-    button.addEventListener("click",() => {
-        if (operator != "") {
-            secondNumber = currentOperation.innerText.split(operator).pop();
+    button.addEventListener("click",() => {       
+        console.log( firstNumber);
+        console.log( secondNumber);
+        
+        
+        if (operator != "" && check === 1) {
+            secondNumber = currentOperation.innerText.split(operator).pop();            
             currentOperation.innerText = operate(parseFloat(firstNumber),operator,parseFloat(secondNumber));
             previousOperation.innerText = firstNumber + operator + secondNumber;
+            firstNumber = secondNumber;
+          
         }
         firstNumber = currentOperation.innerText;
         operator = button.value;
         check = 0;
+        
     })
 });
 
@@ -74,11 +83,30 @@ decimalButton.addEventListener("click", () => {
     }
 });
 
+nPButton.addEventListener("click", () => {
+    if (currentOperation.innerText != ""){
+        if(Array.from(currentOperation.innerText)[0] === "-") {
+            currentOperation.innerText = currentOperation.innerText.substring(1);
+        }
+        else currentOperation.innerText = "-" + currentOperation.innerText;
+    }
+})
+
+percentangeButton.addEventListener("click", () => {
+    if (currentOperation.innerText != "")
+        currentOperation.innerText = parseFloat(currentOperation.innerText)/100;
+})
+
 deleteButton.addEventListener("click", () => currentOperation.innerText = currentOperation.innerText.substring(0, currentOperation.innerText.length-1) );
 
 equalButton.addEventListener("click", () => {
-    
-    secondNumber = currentOperation.innerText.split(operator).pop(); 
-    currentOperation.innerText = operate(parseFloat(firstNumber),operator,parseFloat(secondNumber));
-    previousOperation.innerText = firstNumber + operator + secondNumber;
+    if (operator === ""){
+        currentOperation.innerText = currentOperation.innerText;
+    }
+    else {    
+        secondNumber = currentOperation.innerText.split(operator).pop(); 
+        currentOperation.innerText = operate(parseFloat(firstNumber),operator,parseFloat(secondNumber));
+        previousOperation.innerText = firstNumber + operator + secondNumber;
+        operator = "";
+    }
 });
